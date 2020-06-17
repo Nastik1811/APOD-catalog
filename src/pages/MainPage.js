@@ -16,13 +16,20 @@ const MainPage = () => {
   
   useEffect(() => {
     setLoading(true)
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`).then(
-        response =>  response.json()
-    )
-    .then(setApod)
-    .then(() => {
-        setLoading(false)
-    })
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`)
+        .then(response => {
+            if(response.status === 200){
+                return response.json()
+            }else{
+                throw Error()
+            }
+        })
+        .then(setApod)
+        .then(() => {
+            setLoading(false)
+            })
+        .catch(() => alert("Something went wrong. Try to pick another date."))
+    
 }, [date])
 
   return (

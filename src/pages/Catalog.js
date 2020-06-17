@@ -13,13 +13,16 @@ const Catalog = () => {
         const dates = getDatesRange()
         const data = dates.map(async date => {
             const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`);
+            if(response.status !== 200){
+                return null
+            }
             const apod = await response.json();
             if (!apod.url.match(/\.(gif|jpe?g|png)$/)) {
-                return {...apod, url: "https://www.wallpaperflare.com/static/565/426/551/space-illustration-blue-moon-wallpaper.jpg"}
+                return null
             }
             return apod
         })
-        Promise.all(data).then(setApods).then(() => setLoading(false))
+        Promise.all(data).then(data => setApods(data.filter(x => !!x))).then(() => setLoading(false))
     }, [])
 
   return (

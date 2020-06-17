@@ -21,3 +21,15 @@ export const fetchApod = (date, callback) => {
                 }
             })
 }
+
+export const getDatesRange = () =>{
+    const today = new Date()
+    const dates = []
+    for(let i = 0; i < 30; i++){
+        let day = new Date()
+        day.setDate(today.getDate() - i)
+        dates.push(day)
+    }
+    console.log( dates)
+    return dates.map(date => formatDate(date))
+}

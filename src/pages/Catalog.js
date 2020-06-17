@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { ApodList } from '../components/ApodsList';
 import Loader from '../components/Loader';
+import { getDatesRange } from '../utils';
 
 
 const Catalog = () => {
@@ -9,7 +10,7 @@ const Catalog = () => {
 
 
     useEffect(() => {
-        const dates = ['2020-03-01', '2020-03-02', '2020-03-03', '2020-03-04']
+        const dates = getDatesRange()
         const data = dates.map(async date => {
             const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`);
             const apod = await response.json();
@@ -23,10 +24,10 @@ const Catalog = () => {
 
   return (
       <section className="main-section">
-          <header>
-              <h1>APODs for the last 30 days</h1>
+          <header className="section-header">
+              <h1 className="section-title">APODs for the last 30 days</h1>
           </header>
-        {!apods? <Loader/> : <ApodList apods={apods}/>}
+        {loading? <Loader/> : <ApodList apods={apods}/>}
       </section>
   );
 }

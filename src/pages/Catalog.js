@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { ApodList } from '../components/ApodsList';
 import Loader from '../components/Loader';
 import { getDatesRange } from '../utils';
-import ModalView from '../components/ModalView';
 import ExpanedApod from '../components/ExpanedApod';
 
 

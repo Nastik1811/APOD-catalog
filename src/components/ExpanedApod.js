@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import ModalView from './ModalView'
-import Loader from './Loader'
 
 const ExpanedApod = ({date, onDismiss}) => {
     const [apod, setApod] = useState(null)

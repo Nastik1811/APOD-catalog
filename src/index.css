@@ -23,8 +23,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: -webkit-linear-gradient(148deg, rgb(189, 117, 199), rgb(0, 39, 167)) ;
-  background-image: linear-gradient(148deg, rgb(191, 132, 218), rgb(0, 44, 189)) ;
+  background-image: -webkit-linear-gradient(125deg, rgb(191, 132, 218) 5%, rgb(0, 44, 189)) ;
+  background-image: linear-gradient(125deg, rgb(191, 132, 218) 5%, rgb(0, 44, 189)) ;
 }
 
 body, html {
@@ -95,7 +95,9 @@ body, html {
 }
 .date-picker label{
   margin-right: 20px;
-  font-size: 1.3rem;
+  font-family: "Roboto";
+  font-size: 1.4rem;
+  font-weight: 400;
   line-height: 100%;
 }
 .date-picker{
@@ -162,19 +164,21 @@ body, html {
   width: 100%;
   margin: auto;
   margin-top: 20px;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .preview{
+  box-sizing: content-box;
   position: relative;
   cursor: pointer;
   box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
-  width: 320px;
+  width: 300px;
   height: 300px;
   overflow: hidden;
-  margin-bottom: 15px;
-  border-radius: 2px;
-  background-color: #fff;
+  margin: 7px;
+  border-radius: 3px;
+  background-color: rgba(34, 28, 59, 0.438);
+  padding: 5px;
 }
 
 .preview-title, .preview-date, .preview::before{
@@ -185,7 +189,7 @@ body, html {
   visibility: hidden;
   color: white;
   font-size: 2rem;
-  top: 0.5rem;
+  top: 0.8rem;
   width: 100%;
   text-align: center;
   margin: auto;
@@ -202,6 +206,7 @@ body, html {
 }
 
 .preview::before{
+  box-sizing: content-box;
   content: "";
   width: 100%;
   height: 100%;
@@ -220,6 +225,7 @@ body, html {
 .preview-img{
   width: 100%;
   height: 100%;
+  border-radius: 3px;
 }
 
 .section-header{

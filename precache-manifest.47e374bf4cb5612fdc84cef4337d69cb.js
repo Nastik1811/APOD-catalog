@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5da2221d69f18613656db747509c28f0",
+    "revision": "16db800e26ca77d99abadbdb27e0ea13",
     "url": "/APOD-catalog/index.html"
   },
   {
-    "revision": "60b0dd1e7c8d3aa503ee",
-    "url": "/APOD-catalog/static/css/main.39ee3a0f.chunk.css"
+    "revision": "67341aa659ed00f40b3c",
+    "url": "/APOD-catalog/static/css/main.bfba28a8.chunk.css"
   },
   {
     "revision": "436927babc2ab7135334",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/APOD-catalog/static/js/2.eb3c3855.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "60b0dd1e7c8d3aa503ee",
+    "revision": "67341aa659ed00f40b3c",
     "url": "/APOD-catalog/static/js/main.a22afd08.chunk.js"
   },
   {

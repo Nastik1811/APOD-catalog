@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/APOD-catalog/static/css/main.39ee3a0f.chunk.css",
+    "main.js": "/APOD-catalog/static/js/main.a22afd08.chunk.js",
+    "main.js.map": "/APOD-catalog/static/js/main.a22afd08.chunk.js.map",
+    "runtime-main.js": "/APOD-catalog/static/js/runtime-main.1d192ab8.js",
+    "runtime-main.js.map": "/APOD-catalog/static/js/runtime-main.1d192ab8.js.map",
+    "static/js/2.eb3c3855.chunk.js": "/APOD-catalog/static/js/2.eb3c3855.chunk.js",
+    "static/js/2.eb3c3855.chunk.js.map": "/APOD-catalog/static/js/2.eb3c3855.chunk.js.map",
+    "index.html": "/APOD-catalog/index.html",
+    "precache-manifest.5bf540bc9666f30f33aa8ce88d885f94.js": "/APOD-catalog/precache-manifest.5bf540bc9666f30f33aa8ce88d885f94.js",
+    "service-worker.js": "/APOD-catalog/service-worker.js",
+    "static/css/main.39ee3a0f.chunk.css.map": "/APOD-catalog/static/css/main.39ee3a0f.chunk.css.map",
+    "static/js/2.eb3c3855.chunk.js.LICENSE.txt": "/APOD-catalog/static/js/2.eb3c3855.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/APOD-catalog/static/media/Roboto-Regular.11eabca2.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1d192ab8.js",
+    "static/js/2.eb3c3855.chunk.js",
+    "static/css/main.39ee3a0f.chunk.css",
+    "static/js/main.a22afd08.chunk.js"
+  ]
+}

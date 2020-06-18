@@ -2,12 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { ApodList } from '../components/ApodsList';
 import Loader from '../components/Loader';
 import { getDatesRange } from '../utils';
+import ModalView from '../components/ModalView';
+import ExpanedApod from '../components/ExpanedApod';
 
 
 const Catalog = () => {
     const [apods, setApods] = useState(null)
     const [loading, setLoading] = useState(true)
 
+
+    const [pickedDate, setPickedDate] = useState('2020-10-12')
+    const [show, setShow] = useState(false)
 
     useEffect(() => {
         const dates = getDatesRange()
@@ -25,12 +30,19 @@ const Catalog = () => {
         Promise.all(data).then(data => setApods(data.filter(x => !!x))).then(() => setLoading(false))
     }, [])
 
+    const handleClick = date => {
+        setPickedDate(date)
+        setShow(true)
+    }
+
   return (
       <section className="main-section">
           <header className="section-header">
-              <h1 className="section-title">APODs for the last 30 days</h1>
+              <h1 className="section-title">APODs from the last 30 days</h1>
+              <span className="section-details">* Click to expand HD *</span>
           </header>
-        {loading? <Loader/> : <ApodList apods={apods}/>}
+        {loading? <Loader/> : <ApodList apods={apods} onClick={handleClick}/>}
+        {show && <ExpanedApod date={pickedDate} onDismiss={() => setShow(false)}/>}
       </section>
   );
 }

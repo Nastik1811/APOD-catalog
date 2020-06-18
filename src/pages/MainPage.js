@@ -38,7 +38,7 @@ const MainPage = () => {
             <h1 className="section-title">Astronomy Picture of the Day</h1>
         </header>
         <DatePicker date={date} onChange={setDate}/>
-        {loading ? <Loader/>:<Apod imgUrl={apod.url} title={apod.title}/> }
+        {loading ? <Loader/>:<Apod imgUrl={apod.url} title={apod.title} description={apod.explanation}/> }
     </section>)
 }
 

@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Apod = ({imgUrl, title}) => {
+const Apod = ({imgUrl, title, description}) => {
 
     return(
     <div className="apod-container">
+
         <header>
             <h2 className="title">{title}</h2>  
         </header>
@@ -13,7 +14,12 @@ const Apod = ({imgUrl, title}) => {
                 alt={title} 
                 className="picture"
                 />
-            </div> 
+            <div className="description-container">
+                <p>
+                    {description}
+                </p>
+            </div>
+        </div> 
             
     </div>
     )  

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { ApodList } from '../components/ApodsList';
 import Loader from '../components/Loader';
-import { getDatesRange } from '../utils';
+import { getDatesRange, isImage } from '../utils';
 import ExpanedApod from '../components/ExpanedApod';
 
 
@@ -21,7 +21,7 @@ const Catalog = () => {
                 return null
             }
             const apod = await response.json();
-            if (!apod.url.match(/\.(gif|jpe?g|png)$/)) {
+            if (!isImage(apod.url)) {
                 return null
             }
             return apod

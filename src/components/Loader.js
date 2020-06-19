@@ -1,12 +1,5 @@
 import React from 'react'
-import  './Loader.css'
-
 const Loader = () => {
-    // return(
-    //     <div className="loader-container">
-    //              Loading...
-    //     </div>
-    // )
     return(
         <div className="loader">
                 <div className="animation-container">

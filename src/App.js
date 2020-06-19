@@ -10,10 +10,10 @@ const App = () => {
     <Router basename='/'>
       <div className="container">
             <Navbar/>
-              <Switch>
-                  <Route path='/catalog' component={Catalog}/>
-                  <Route exact path='/' component={MainPage}/>
-              </Switch>
+            <Switch>
+                <Route path='/catalog' component={Catalog}/>
+                <Route exact path='/' component={MainPage}/>
+            </Switch>
         </div>
       </Router>
     

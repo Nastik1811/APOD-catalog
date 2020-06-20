@@ -1,6 +1,5 @@
 import React from 'react'
 import MainPage from './pages/MainPage';
-import Navbar from './components/Navbar';
 import { Switch, Route,  HashRouter as Router } from 'react-router-dom';
 import Catalog from './pages/Catalog';
 

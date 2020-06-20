@@ -9,19 +9,26 @@ import { NavLink } from 'react-router-dom';
 
 
 const Catalog = () => {
-    const initMonth = () => window.localStorage.getItem("month") || (new Date()).getMonth() + 1;
-    const initYear = () => window.localStorage.getItem("year") || (new Date()).getFullYear();
+    const initMonth = () => window.localStorage.getItem("month") || new Date().getMonth() + 1;
+    const initYear = () => window.localStorage.getItem("year") || new Date().getFullYear();
 
     const [apods, setApods] = useState(null)
     const [loading, setLoading] = useState(true)
 
     const [month, setMonth] = useState(initMonth)
     const [year, setYear] = useState(initYear)
+    const [lastEnabled, setLastEnabled] = useState(12)
 
     const [pickedDate, setPickedDate] = useState(null)
     const [show, setShow] = useState(false)
 
     useEffect(() => {
+        if(year === new Date().getFullYear()){
+            setLastEnabled(new Date().getMonth() + 1)
+        }
+        else{
+            setLastEnabled(12)
+        }
         const dates = getDatesRange(month, year)
         const data = dates.map(async date => {
             const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`);
@@ -49,8 +56,8 @@ const Catalog = () => {
             <NavLink className="nav-link" exact to='/'>Return to apod</NavLink>
         </header>
         <div className="picker-container">
-            <MonthPicker/>
-            <YearPicker/>
+            <MonthPicker value={month} onSelect={setMonth} lastEnabled={lastEnabled}/>
+            <YearPicker value={year} onSelect={setYear}/>
         </div>
         {loading? <Loader/> : <ApodList apods={apods} onClick={handleClick}/>}
         {show && <ExpanedApod date={pickedDate} onDismiss={() => setShow(false)}/>}

@@ -268,6 +268,9 @@ body, html {
 }
 
 .loader{
+  position: absolute;
+  height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -336,7 +339,6 @@ body, html {
 
 .picker-container{
   position: relative;
-  padding: 10px;
   text-align: center;
 }
 
@@ -354,14 +356,14 @@ body, html {
 .picker{
   display: inline-block;
   font-size: 1.3rem;
-  margin-left: 15px;
+  margin: 10px;
   padding: 10px;
   width: 220px;
   border-radius: 10px;
   height: 3rem;
   border: 2px solid rgb(38, 40, 73);
   background-color: transparent;
-  background-color: rgba(234, 242, 255, 0.8);
+  background-color: rgb(234, 242, 255);
 }
 .picker:focus{
   outline: none;

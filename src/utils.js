@@ -1,3 +1,9 @@
+const createISODate = (year, month, day) =>  year + '-' + month + '-' + day
+const isCurrentMonth = (month, year) => {
+    const today = new Date()
+    return month === today.getMonth() + 1 && year === today.getFullYear()
+}
+
 export const formatDate = date => {
     let year = date.getFullYear()
     let month = date.getMonth() + 1
@@ -5,7 +11,7 @@ export const formatDate = date => {
     let day = date.getDate()
     day = day < 10 ? '0' + day : day
 
-    return year + '-' + month + '-' + day
+    return createISODate(year, month, day)
 }
 
 export const fetchApod = (date, callback) => {
@@ -21,15 +27,23 @@ export const fetchApod = (date, callback) => {
                 }
             })
 }
+export const isImage = url => {
+    return url.match(/\.(gif|jpe?g|png)$/)
+}
 
-export const getDatesRange = () =>{
-    const today = new Date()
+export const getDatesRange = (month, year) =>{
     const dates = []
-    for(let i = 0; i < 30; i++){
-        let day = new Date()
-        day.setDate(today.getDate() - i)
-        dates.push(day)
+    let lastDay = isCurrentMonth(month, year) ? new Date().getDate() : new Date(year, month, 0).getDate()
+    for(let day = lastDay; day > 0; day--){
+        dates.push(createISODate(year, month, day))
     }
-    console.log( dates)
-    return dates.map(date => formatDate(date))
+    return dates
+}
+
+export const getYearsRange = (min, max) => {
+    const years = []
+    for(let i = min; i <= max; i++){
+        years.push(i)
+    }
+    return years
 }

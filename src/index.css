@@ -16,15 +16,6 @@
     url("./assets/fonts/Raleway-Regular.ttf") format('truetype');
 } 
 
-@font-face{
-  font-family: "Raleway";
-  font-style: normal;
-  font-weight: 500;
-  src: 
-    local("Raleway"),
-    url("./assets/fonts/Raleway-Medium.ttf") format('truetype');
-} 
-
 body {
   margin: 0;
   font-family: "Raleway", "Roboto", 'Oxygen',
@@ -32,14 +23,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: -webkit-linear-gradient(125deg, rgb(191, 132, 218) 5%, rgb(0, 44, 189)) ;
-  background-image: linear-gradient(125deg, rgb(191, 132, 218) 5%, rgb(0, 44, 189)) ;
-  color: #040041;
+  background-image: -webkit-linear-gradient(145deg, rgb(0, 44, 189) 5%,rgb(191, 132, 218)) ;
+  background-image: linear-gradient(145deg, rgb(123, 185, 255) 5%,rgb(28, 0, 185));
+  background-attachment: fixed;
 }
 
 body, html {
   min-height: 100%;
   }
+
 #root{
   min-height: 100vh;
   display: flex;
@@ -49,6 +41,8 @@ body, html {
 .container{
   min-height: 100%;
   min-width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 *{
@@ -58,13 +52,12 @@ body, html {
 }
 
 .header{
-  height: 80px;
-  padding: 30px 6vw;
-  vertical-align: middle;
-  line-height: 100%;
+  padding: 30px 6vw 10px;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-end;
+  position: absolute;
+  right: 0;
 }
 .header h1{
   line-height: 100%;
@@ -75,75 +68,60 @@ body, html {
   }
   
 .nav-link{
-    color: #000;
+  display: inline-block;
+  color: rgb(66, 70, 129);
     text-decoration: none;
     font-size: 1.3rem;
-    display: block;
-    margin-left: 15px;
     transition: all 0.1s ease;
     border-bottom: 2px dashed;
     padding-bottom: 2px;
-    border-color: transparent;
   }
   .nav-link:hover{
-    color: #393758;
-    border-color: #393758;
-  }
-  .active-link{
-    border-color: #000;
+    color: rgb(38, 40, 73);
+    transform: scale(1.1);
   }
 
 .main-section{
   margin: auto;
-  padding: 1vw 3vw;
+  padding: 2vw 3vw;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
 }
-.date-picker label{
-  margin-right: 20px;
-  font-family: "Roboto";
-  font-size: 1.4rem;
-  font-weight: 400;
-  line-height: 100%;
-}
-.date-picker{
-  position: relative;
-  border: 2px dashed rgb(31, 8, 61);
+.card{
+  padding: 20px;
   border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 15px;
-}
-.date-picker input{
-  font-size: 1.2rem;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.35);
+  background-color: rgb(234, 242, 255);
+  font-size: 1.5rem;
 }
 
 .apod-container{
-  margin: auto;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+  padding: 15px;
   border-radius: 5px;
-  min-height: 300px;
-  background-color: rgb(255, 255, 255);
-  width: 600px;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.35);
+  background-color: rgb(234, 242, 255);
 }
-.card{}
 
 .picture{
-  width: 100%;
-  height: auto;
+  width: auto;
+  max-width: 80vw;
+  max-height: 65vh;
+  margin-bottom: -5px;
 }
 
 .picture-container{
   margin: auto;
   position: relative;
-  max-height: 700px;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .description-container{
@@ -173,7 +151,7 @@ body, html {
   flex-wrap: wrap;
   width: 100%;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 10px;
   justify-content: center;
 }
 
@@ -185,9 +163,8 @@ body, html {
   height: 300px;
   overflow: hidden;
   margin: 7px;
-  border-radius: 3px;
-  background-color: rgba(34, 28, 59, 0.438);
-
+  border-radius: 2px;
+  background-color: rgba(34, 28, 59, 0.6);
 }
 
 .preview-title, .preview-date, .preview::before{
@@ -241,23 +218,17 @@ body, html {
 }
 
 .section-header{
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   text-align: center;
 }
 
 .section-title{
   font-size: 2.1rem;
+  color: rgb(21, 23, 65);
 }
 .section-details{
   font-size: 1.2rem;
 }
-
-hr{
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid #000;
-}
-
 
 .window{
   position: fixed;
@@ -281,22 +252,22 @@ hr{
   box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
 }
 
-.modal-image{
-  animation: appearing .5s cubic-bezier(.02,.48,.66,.76) 0s 1;
+.appearing{
+  animation: appearing .3s cubic-bezier(.02,.48,.66,.76) 0s 1;
 }
 
 @keyframes appearing{
   0%{
-      transform: translateY(-500px);
+      opacity: 0%;
+      transform: scale(0.2);
   }
-  50%{
-    transform: translateY(50px);
+  100%{
+    opacity: 100%;
+    transform: scale(1);
   }
 }
 
-.loader-container{
-  width: 100%;
-  height: 100%;
+.loader{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -363,17 +334,36 @@ hr{
   visibility: hidden;
 }
 
-.date-picker input:invalid{
+.picker-container{
+  position: relative;
+  padding: 10px;
+  text-align: center;
+}
+
+.date-picker:invalid{
   color: red;
 }
 
-/* .date-picker input:invalid+.error_msg::after{
-  content: "Invalid date";
-  width: 100px;
-  height: 20px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  text-align: center;
+.select-section label{
+  font-weight: 300;
+  font-size: 1.5rem;
+  height: 2.2rem;
+  margin: 10px auto 20px ;
+}
+
+.picker{
+  display: inline-block;
+  font-size: 1.3rem;
+  margin-left: 15px;
   padding: 10px;
-  position: absolute;
-} */
+  width: 220px;
+  border-radius: 10px;
+  height: 3rem;
+  border: 2px solid rgb(38, 40, 73);
+  background-color: transparent;
+  background-color: rgba(234, 242, 255, 0.8);
+}
+.picker:focus{
+  outline: none;
+  border-color: black;
+}

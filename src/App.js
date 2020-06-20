@@ -9,11 +9,12 @@ const App = () => {
   return (
     <Router basename='/'>
       <div className="container">
-            <Navbar/>
+            <section className="main-section">
             <Switch>
                 <Route path='/catalog' component={Catalog}/>
                 <Route exact path='/' component={MainPage}/>
             </Switch>
+            </section>
         </div>
       </Router>
     

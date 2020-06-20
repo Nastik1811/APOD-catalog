@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { formatDate, isImage } from '../utils';
+import { formatDate } from '../utils';
 import Loader from '../components/Loader';
 import Apod from '../components/Apod';
-import DatePicker from '../components/DatePicker/DatePicker';
+import DatePicker from '../components/DatePicker';
 import ErrorMsg from '../components/Error';
+import { NavLink } from 'react-router-dom';
 
 
 const MainPage = () => {
@@ -46,7 +47,13 @@ const MainPage = () => {
 
   return (
     <>
-        <DatePicker date={date} onChange={setDate}/>
+        <header className="section-header">
+            <h1 className="section-title">Astronomy Picture of the Day</h1>
+            <NavLink className="nav-link" exact to='/catalog'>Go to catalog</NavLink>
+        </header>
+        <div className="picker-container">
+            <DatePicker date={date} onChange={setDate}/>
+        </div>
         {imgLoading && <Loader/>}
         {!loading && !error && 
             <Apod 

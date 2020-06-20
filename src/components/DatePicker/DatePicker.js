@@ -6,7 +6,7 @@ const DatePicker = ({date, onChange}) => {
     
     return(    
         <div className="date-picker">
-            <label htmlFor="picker">Let's pick a date</label>
+            <label htmlFor="picker">Pick a date: </label>
             <input 
                 name="picker" 
                 type="date" 

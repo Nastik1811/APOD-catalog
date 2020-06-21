@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { formatDate, fetchApod } from '../utils';
 import Loader from '../components/Loader';
 import Apod from '../components/Apod';
-import DatePicker from '../components/DatePicker';
 import ErrorMsg from '../components/Error';
 import { NavLink } from 'react-router-dom';
+import Calendar from '../components/Calendar';
 
 
 const MainPage = () => {
@@ -45,7 +45,7 @@ const MainPage = () => {
             <NavLink className="nav-link" exact to='/catalog'>Go to catalog</NavLink>
         </header>
         <div className="picker-container">
-            <DatePicker date={date} onChange={setDate}/>
+            <Calendar date={date} onChange={setDate}/>
         </div>
         {imgLoading && <Loader/>}
         {!loading && !error && 

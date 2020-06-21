@@ -1,20 +1,34 @@
-import React from 'react'
-import { formatDate } from '../utils'
-import { minDate } from '../constants'
+import React, { useEffect, useState } from 'react'
+import MonthPicker from './MonthPicker'
+import YearPicker from './YearPicker'
 
-const DatePicker = ({date, onChange}) => {
-    const handleChange = e => onChange(e.target.value)
-    
+const DatePicker = ({month, year, onMonthChange, onYearChange}) => {
+    const [disableMonths, setDisableMonths] = useState(false)
+    const [disableYear, setDisableYear] = useState(false)
+
+    useEffect(() => {
+        const today = new Date()
+        if(year === today.getFullYear()){
+            setDisableMonths(true)
+        }
+        else{
+            setDisableMonths(false)
+        }
+
+        if(month > today.getMonth() + 1){
+            setDisableYear(true)
+        }
+        else{
+            setDisableYear(false)
+        }
+
+    }, [month, year])
+
     return(    
-            <input 
-                name="picker" 
-                className="picker date-picker"
-                type="date" 
-                value={date} 
-                onChange={handleChange} 
-                max={formatDate(new Date())} 
-                min={formatDate(new Date(minDate.year, minDate.month, minDate.day))}
-                />
+        <div className="picker-container">
+            <MonthPicker value={month} onSelect={onMonthChange} disableMonths={disableMonths}/>
+            <YearPicker value={year} onSelect={onYearChange} disableYear={disableYear} thisYear={new Date().getFullYear()}/>
+        </div>
         
     )
 }

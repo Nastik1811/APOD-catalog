@@ -3,9 +3,8 @@ import { ApodList } from '../components/ApodsList';
 import Loader from '../components/Loader';
 import { getDatesRange, isImage, fetchApod } from '../utils';
 import ExpanedApod from '../components/ExpanedApod';
-import MonthPicker from '../components/MonthPicker';
-import YearPicker from '../components/YearPicker';
 import { NavLink } from 'react-router-dom';
+import DatePicker from '../components/DatePicker';
 
 
 const Catalog = () => {
@@ -17,19 +16,17 @@ const Catalog = () => {
 
     const [month, setMonth] = useState(initMonth)
     const [year, setYear] = useState(initYear)
-    const [lastEnabled, setLastEnabled] = useState(12)
+    
 
     const [pickedDate, setPickedDate] = useState(null)
     const [show, setShow] = useState(false)
 
-    console.log(apods)
     useEffect(() => {
-        if(year === new Date().getFullYear()){
-            setLastEnabled(new Date().getMonth() + 1)
-        }
-        else{
-            setLastEnabled(12)
-        }
+        window.localStorage.setItem("month", month)
+        window.localStorage.setItem("year", year)
+    }, [month, year]);
+
+    useEffect(() => {
         const dates = getDatesRange(month, year)
         const list = []
 
@@ -56,10 +53,7 @@ const Catalog = () => {
             <h1 className="section-title">APoD catalog</h1>
             <NavLink className="nav-link" exact to='/'>Return to apod</NavLink>
         </header>
-        <div className="picker-container">
-            <MonthPicker value={month} onSelect={setMonth} lastEnabled={lastEnabled}/>
-            <YearPicker value={year} onSelect={setYear}/>
-        </div>
+        <DatePicker month={month} year={year} onMonthChange={setMonth} onYearChange={setYear}/>
         {loading? <Loader/> : <ApodList apods={apods} onClick={handleClick}/>}
         {show && <ExpanedApod date={pickedDate} onDismiss={() => setShow(false)}/>}
       </>

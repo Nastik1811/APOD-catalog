@@ -1,15 +1,15 @@
 import React from 'react'
 import { monthNames } from '../constants'
 
-const MonthPicker = ({value, onSelect, lastEnabled}) => {
+const MonthPicker = ({value, onSelect, disableMonths}) => {
     
     return(
-        <select value={value} onChange={e => onSelect(e.target.value)} className="picker">
+        <select value={value} onChange={e => onSelect(+e.target.value)} className="picker">
             {monthNames.map(
                 name => <option 
                             value={monthNames.indexOf(name) + 1} 
                             key={name}
-                            disabled={monthNames.indexOf(name) + 1 > lastEnabled}
+                            disabled={disableMonths && monthNames.indexOf(name) > new Date().getMonth()}
                             >{name}
                         </option>)}
         </select>

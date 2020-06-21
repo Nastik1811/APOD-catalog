@@ -14,19 +14,6 @@ export const formatDate = date => {
     return createISODate(year, month, day)
 }
 
-export const fetchApod = (date, callback) => {
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`).then(
-                response =>  response.json()
-            )
-            .then(apod => {
-                if(apod.url.match(/\.(gif|jpe?g|png)$/)){
-                    callback(apod)
-                }
-                else{
-                    throw Error("No image")
-                }
-            })
-}
 export const isImage = url => {
     return url.match(/\.(gif|jpe?g|png)$/)
 }
@@ -46,4 +33,18 @@ export const getYearsRange = (min, max) => {
         years.push(i)
     }
     return years
+}
+
+export const fetchApod = (date) => {
+    return fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`)
+            .then(response => {
+                if(response.ok){
+                    return response.json()
+                }
+                return response.json().then( error => {
+                    const e = new Error( error.msg || "Somthing went wrong")
+                    e.data = error
+                    throw e
+                })
+            })
 }

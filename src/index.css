@@ -44,7 +44,6 @@ body, html {
   display: flex;
   flex-direction: column;
 }
-
 *{
   margin: 0;
   padding: 0;
@@ -83,6 +82,7 @@ body, html {
 
 .main-section{
   margin: auto;
+  width: 100%;
   padding: 2vw 3vw;
   flex-grow: 1;
   display: flex;
@@ -147,12 +147,11 @@ body, html {
 }
 
 .apods-list{
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   width: 100%;
-  margin: auto;
-  margin-top: 10px;
   justify-content: center;
+  row-gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 320px));
 }
 
 .preview{
@@ -162,7 +161,7 @@ body, html {
   width: 300px;
   height: 300px;
   overflow: hidden;
-  margin: 7px;
+  margin: 6px;
   border-radius: 2px;
   background-color: rgba(34, 28, 59, 0.6);
 }
@@ -290,7 +289,6 @@ body, html {
   height: 15px;
   margin-left: 5px;
   border-radius: 50%;
-  opacity: 60%;
 }
 
 .loader-component{
@@ -319,11 +317,10 @@ body, html {
 @keyframes stretch {
   0% {
       transform: scale(1);
-      background-color: rgb(54, 0, 153);
+      background-color: rgba(54, 0, 153, 0.493);
   }
   100% {
-      opacity: 100%;
-      background-color: rgb(64, 77, 255);
+      background-color: rgb(42, 53, 206);
       transform: scale(.5) ;
   }
 }
@@ -344,13 +341,6 @@ body, html {
 
 .date-picker:invalid{
   color: red;
-}
-
-.select-section label{
-  font-weight: 300;
-  font-size: 1.5rem;
-  height: 2.2rem;
-  margin: 10px auto 20px ;
 }
 
 .picker{

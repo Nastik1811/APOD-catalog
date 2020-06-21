@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { formatDate } from '../utils';
+import { formatDate, fetchApod } from '../utils';
 import Loader from '../components/Loader';
 import Apod from '../components/Apod';
 import DatePicker from '../components/DatePicker';
@@ -24,14 +24,7 @@ const MainPage = () => {
     setImgLoading(true)
     setError(null)
 
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`)
-        .then(response => {
-            if(response.ok){
-                return response.json()
-            }else{
-                throw new Error("Invalid date.")
-            }
-        })
+    fetchApod(date)
         .then((data) => {
             if(data.media_type !== "image"){
                 throw new Error("Oops. The day has no image.")
@@ -43,7 +36,7 @@ const MainPage = () => {
             setImgLoading(false)
         })
         .finally(() => setLoading(false))
-}, [date])
+    }, [date])
 
   return (
     <>

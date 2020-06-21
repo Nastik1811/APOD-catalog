@@ -49,12 +49,14 @@ const Catalog = () => {
 
   return (
       <>
-        <header className="section-header">
-            <h1 className="section-title">APoD catalog</h1>
+        <header className="header">
+            <h1 className="title">APoD catalog</h1>
             <NavLink className="nav-link" exact to='/'>Return to apod</NavLink>
         </header>
         <DatePicker month={month} year={year} onMonthChange={setMonth} onYearChange={setYear}/>
+        <section className="content-section">
         {loading? <Loader/> : <ApodList apods={apods} onClick={handleClick}/>}
+        </section>
         {show && <ExpanedApod date={pickedDate} onDismiss={() => setShow(false)}/>}
       </>
   );

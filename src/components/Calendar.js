@@ -6,6 +6,7 @@ const Calendar = ({date, onChange}) => {
     const handleChange = e => onChange(e.target.value)
     
     return(    
+        <div className="picker-container">
             <input 
                 name="picker" 
                 className="picker date-picker"
@@ -15,6 +16,7 @@ const Calendar = ({date, onChange}) => {
                 max={formatDate(new Date())} 
                 min={formatDate(new Date(minDate.year, minDate.month, minDate.day))}
                 />
+        </div>
         
     )
 }

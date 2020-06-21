@@ -1,9 +1,8 @@
 import React from 'react'
 const ErrorMsg = ({message}) => {
     return(
-    <div className="card">
+    <div className="error">
         <span >{message}</span>
-        <span className="error"></span>
     </div>)
 }
 

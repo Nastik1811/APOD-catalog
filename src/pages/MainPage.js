@@ -40,22 +40,22 @@ const MainPage = () => {
 
   return (
     <>
-        <header className="section-header">
-            <h1 className="section-title">Astronomy Picture of the Day</h1>
+        <header className="header">
+            <h1 className="title">Astronomy Picture of the Day</h1>
             <NavLink className="nav-link" exact to='/catalog'>Go to catalog</NavLink>
         </header>
-        <div className="picker-container">
-            <Calendar date={date} onChange={setDate}/>
-        </div>
-        {imgLoading && <Loader/>}
-        {!loading && !error && 
-            <Apod 
-                imgUrl={apod.url} 
-                title={apod.title} 
-                description={apod.explanation} 
-                hidden={imgLoading}
-                onLoad={() => setImgLoading(false)}/> }
-        {error && <ErrorMsg message={error.message}/>}
+        <Calendar date={date} onChange={setDate}/>
+        <section className="content-section">
+            {imgLoading && <Loader/>}
+            {!loading && !error && 
+                <Apod 
+                    imgUrl={apod.url} 
+                    title={apod.title} 
+                    description={apod.explanation} 
+                    hidden={imgLoading}
+                    onLoad={() => setImgLoading(false)}/> }
+            {error && <ErrorMsg message={error.message}/>}
+        </section>
     </>)
 }
 
